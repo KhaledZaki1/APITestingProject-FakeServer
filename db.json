@@ -1,0 +1,203 @@
+{
+  "Professors": [
+    {
+      "FullName": "Mohamed Ahmed",
+      "E-Mail": "Mohamed@Ahmed.com",
+      "Address": "Misr Elgdida,Cairo",
+      "Phone Number": "010213455",
+      "CourseName": "API Testing",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "FullName": "Ahmed Mohamed",
+      "E-Mail": "Ahmed@Mohamed.com",
+      "Address": "Nasr City,Cairo",
+      "PhoneNumber": "011234567",
+      "CourseName": "Java Programming"
+    },
+    {
+      "id": 3,
+      "FullName": "Nada Ismael",
+      "E-Mail": "NadaIsmael@gmail.com",
+      "Address": "Abbasia,Cairo",
+      "PhoneNumber": "0119983845",
+      "CourseName": "Automation Testing"
+    },
+    {
+      "id": 4,
+      "FullName": "Safaa Omar",
+      "E-Mail": "SafaaOmar@hotmail.com",
+      "Address": "5th settlement,Cairo",
+      "PhoneNumber": "0124585743",
+      "CourseName": "HTML&CSS"
+    },
+    {
+      "FullName": "Hazem Hamdy",
+      "E-Mail": "Hazem@Hamdy.com",
+      "Address": "El-Haram,Giza",
+      "PhoneNumber": "012763234",
+      "CourseName": "JavaScript",
+      "id": 5
+    }
+  ],
+  "Courses": [
+    {
+      "id": 1,
+      "CourseName": "API Testing",
+      "CreditHours": 3,
+      "CourseType": "Basic",
+      "CurrentCourseYear": "First Year",
+      "Details": [
+        {
+          "id": 1,
+          "Title": "What is API Testing",
+          "CourseDuration": "First Semester"
+        },
+        {
+          "id": 2,
+          "Title": "API Testing using Postman",
+          "CourseDuration": "Second Semester"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "CourseName": "Java Programming",
+      "CreditHours": 5,
+      "CourseType": "Intermediate",
+      "CurrentCourseYear": "Second Year",
+      "Details": [
+        {
+          "id": 1,
+          "Title": "Introduction to Intermediate Programming",
+          "CourseDuration": "First Semester"
+        },
+        {
+          "id": 2,
+          "Title": "Object Oriented Programming in Java",
+          "CourseDuration": "Second Semester"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "CourseName": "Automation Testing",
+      "CreditHours": 6,
+      "CourseType": "Advanced",
+      "CurrentCourseYear": "Fourth Year",
+      "Details": [
+        {
+          "id": 1,
+          "Title": "Web Test Automation",
+          "CourseDuration": "First Semester"
+        },
+        {
+          "id": 2,
+          "Title": "Selenium WebDriver with Java",
+          "CourseDuration": "Second Semester"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "CourseName": "JavaScript",
+      "CreditHours": 6,
+      "CourseType": "Intermediate",
+      "CurrentCourseYear": "Third Year",
+      "Details": [
+        {
+          "id": 1,
+          "Title": "Automating in the browser using JavaScript",
+          "CourseDuration": "First Semester"
+        },
+        {
+          "id": 2,
+          "Title": "Cucumber with JavaScript",
+          "CourseDuration": "Second Semester"
+        }
+      ]
+    },
+    {
+      "CourseName": "HTML&CSS",
+      "CreditHours": 6,
+      "CourseType": "Advanced",
+      "Current course year": "Fifth Year",
+      "id": 5,
+      "Details": [
+        {
+          "id": 1,
+          "Title": "Font-End Web Development",
+          "CourseDuration": "First Semester"
+        },
+        {
+          "id": 2,
+          "Title": "Advanced HTML&CSS",
+          "CourseDuration": "Second Semester"
+        }
+      ]
+    }
+  ],
+  "Students": [
+    {
+      "id": 1,
+      "FullName": "Khaled Hamdy Zaki",
+      "E-Mail": "Khaled@Hamdy.com",
+      "Address": "Dokki,Giza",
+      "Grade": "Very Good",
+      "CurrentStatus": "Graduate"
+    },
+    {
+      "FullName": "Sara Sayed Fathy",
+      "E-Mail": "Sara@Sayed.com",
+      "Address": "Zayed,Cairo",
+      "Grade": "Excellent",
+      "CurrentStatus": "Graduate",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "FullName": "Youmna Ibrahim Ali",
+      "E-Mail": "Youmna_Ibrahim@yahoo.com",
+      "Address": "Dokki,Giza",
+      "Grade": "Good",
+      "CurrentStatus": "Undergraduate"
+    },
+    {
+      "FullName": "Amany Mostafa Eldemerdash",
+      "E-Mail": "Amany_M@gmail.com",
+      "Address": "Faisal,Giza",
+      "Grade": "Good",
+      "CurrentStatus": "Undergraduate",
+      "id": 4
+    },
+    {
+      "FullName": "Nouha Zaki Mohamed",
+      "E-Mail": "N_Zaki@gmail.com",
+      "Address": "October,Giza",
+      "Grade": "Excellent",
+      "CurrentStatus": "Undergraduate",
+      "id": 5
+    },
+    {
+      "FullName": "Salma Ibrahim Tolba",
+      "E-Mail": "Salma12@gmail.com",
+      "Address": "Zayed,Giza",
+      "Grade": "Good",
+      "CurrentStatus": "Graduate",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "email": "Khaledhamdy@yahoo.com",
+      "password": "$2a$10$6LaepUDoOH7TBIbZ7GSNROevOZA6Vdc0y5gDGcKRAW60YcRhJHG0W",
+      "id": 1
+    },
+    {
+      "email": "Khaled_Khalod@yahoo.com",
+      "password": "$2a$10$0up3Xa8vJv4ToBzhvrNgUOWEHsW6TeUw3rhsZ1b43QdgvRtr0YXMm",
+      "id": 2
+    }
+  ]
+}

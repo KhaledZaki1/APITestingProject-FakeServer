@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "1afb2866-a83b-4362-91b8-d1a56ebfc6c3",
+		"name": "UniversityDataBaseProject",
+		"description": "*It's a university Database which contains :*\n\n  \n\\-Courses.\n\n\\-Professors who teach these courses.\n\n\\-Students who have these courses.  \n\nso, here we update this database if we want to change these data in the university database server , as adding a new course, professors and so on...",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login to the server by the Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"var token = jsonData.accessToken\r",
+							"\r",
+							"pm.environment.set(\"Token\", token);\r",
+							"\r",
+							"pm.test(\"Admin User is logged to the server successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Admin didn't insert his credentials, so he can't log to the server\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"Khaled_Khalod@yahoo.com\",\r\n    \"password\": \"Louda1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Professors Data in the server",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Professors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Professors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Courses Data in the server",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/Courses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Students Info in the server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Another Student has been added recently in the server\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Students",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Professor Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"FullName\": \"Mohamed Ahmed\",\r\n      \"E-Mail\": \"Mohamed@Ahmed.com\",\r\n      \"Address\": \"Misr Elgdida,Cairo\",\r\n      \"Phone Number\": \"010213455\",\r\n      \"CourseName\": \"API Testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/Professors/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Professors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Course Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {     \"CourseName\": \"HTML&CSS\",\r\n      \"CreditHours\": 6,\r\n      \"CourseType\": \"Advanced\",\r\n      \"Current course year\": \"Fifth Year\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/Courses/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Courses",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a course by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Courses/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Courses",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find a professor by Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checking if the professor who has been added recently to the server is already exist\", function () {\r",
+							"    var jsonArrayData = pm.response.json();\r",
+							"    pm.expect(jsonArrayData[0].FullName).to.eql(\"Hazem Hamdy\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Professors?FullName=Hazem Hamdy",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Professors"
+					],
+					"query": [
+						{
+							"key": "FullName",
+							"value": "Hazem Hamdy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"FullName\": \"Salma Ibrahim Tolba\",\r\n      \"E-Mail\": \"Salma12@gmail.com\",\r\n      \"Address\": \"Zayed,Giza\",\r\n      \"Grade\": \"Good\",\r\n      \"Current status\": \"Graduate\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/660/Students/6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Students",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a Course from university Database",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Student ID=8 has been removed from the server successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Professors/6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Professors",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if all courses are recorded correctly in database API server\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking if an API Testing Course is exist\", function () {\r",
+							"    var jsonArrayData = pm.response.json();\r",
+							"    pm.expect(jsonArrayData[0].CourseName).to.eql(\"API Testing\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Courses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Professors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check all professors data are recorded in the server correctly\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Checking if there is a professor teach an Automation testing Course\", function (){\r",
+							"    pm.expect(pm.response.text()).to.include(\"Automation Testing\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Professors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Professors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if all Students Data are recorded correctly in our server\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if there's a graduate student\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Graduate\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if there's an undergraduate student\", function () {\r",
+							"    var jsonArrayData = pm.response.json();\r",
+							"    pm.expect(jsonArrayData[3].CurrentStatus).to.eql(\"Undergraduate\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/660/Students",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"660",
+						"Students"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
